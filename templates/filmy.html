@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmy</title>
+</head>
+<body>
+    <h1>Filmy</h1>
+
+    <!-- formulář pro vyhledávání, filtrování a řazení -->
+    <form action="{{ url_for('get_filmy') }}">
+        <label for="hledat">Vyhledávání:</label>
+        <input type="text" id="hledat" name="hledat">
+        <button type="submit">Hledat</button>
+    </form>
+
+    <br/>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Název</th>
+                <th>Žánr</th>
+                <th>Rok</th>
+                <th>Hodnocení</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for id, film in filmy.items() %}
+            <tr>
+                <td>{{ film.nazev }}</td>
+                <td>{{ film.zanr }}</td>
+                <td>{{ film.rok }}</td>
+                <td>{{ film.hodnoceni }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
